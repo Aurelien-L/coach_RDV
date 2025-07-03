@@ -52,6 +52,28 @@ nav a:hover {
     color: #facc15;
 }
 
+.nav-link-button {
+    color: #f1f5f9;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.nav-link-button:hover {
+    color: #facc15;
+}
+
+.nav-user {
+    margin: 0 10px;
+}
+
+.username {
+    color: #facc15; 
+    font-weight: 400;
+}
+
+
 /* MAIN */
 main {
     background-color: #e2e8f0; /* gris clair */
@@ -61,6 +83,7 @@ main {
     padding: 20px;
 }
 
+
 /* FOOTER */
 footer {
     background-color: #334155;
@@ -68,4 +91,50 @@ footer {
     font-size: 0.9em;
     border-top: 2px solid #facc15;
     padding: 20px 0;
+}
+
+
+/* Formulaires */
+.form-style {
+    background-color: #f8fafc; /* gris très clair */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    color: #1e293b;
+}
+
+.form-style input[type="text"],
+.form-style input[type="password"],
+.form-style input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+}
+
+.btn-submit {
+    background-color: #facc15;
+    color: #1e293b;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #eab308;
+}
+
+/* Messages */
+.message {
+    background-color: #bbf7d0; /* vert clair */
+    color: #166534;
+    border-left: 4px solid #22c55e;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
 }
