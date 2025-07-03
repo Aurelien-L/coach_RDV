@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Coach{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <img src="{% static 'images/sun.png' %}" alt="logo soleil" class="logo">
+                <div>
+                    <h1>Mon Coach en ligne</h1>
+                    <nav>
+                        <a href="{% url 'accueil' %}">Accueil</a> |
+                        <a href="/rdv/">Rendez-vous</a> |
+                        <a href="/connexion/">Se connecter</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 - Jean "Bibi" Biceps</p>
+        </div>
+    </footer>
+</body>
+</html>
