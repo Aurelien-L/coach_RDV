@@ -2,7 +2,11 @@
 {% block title %}Espace Coach{% endblock %}
 
 {% block content %}
-<h1>Bienvenue Coach {{ user.username }}</h1>
-<p>Voici tous les rendez-vous :</p>
+<h1>Bienvenue {{ user.username }}, le super Coach ! </h1>
+
+<p>Voici vos rendez-vous à venir :</p>
 <!-- Ici tu afficheras tous les rendez-vous si tu as un modèle associé -->
+
+<p> Vous souhaitez vous-même prendre rendez-vous? Cliquez <a href="{% url 'online_rdv:rdv' %}">ici</a> ! </p>
+
 {% endblock %}
