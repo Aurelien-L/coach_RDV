@@ -21,7 +21,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls'), name="accueil"),
-    path('', include('accounts.urls'), name="accounts"),
+    path('accounts/', include('accounts.urls'), name="accounts"),
+    path('rdv/', include('online_rdv.urls'), name="rdv"),
 ]
 
 

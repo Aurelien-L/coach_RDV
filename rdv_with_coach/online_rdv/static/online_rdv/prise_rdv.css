@@ -1,0 +1,85 @@
+/* === prise_rdv.css - Ninja du Chill === */
+
+.rdv-container {
+    max-width: 580px;
+    margin: 48px auto;
+    padding: 28px 30px;
+    background-color: #404a56;
+    border-radius: 18px;
+    box-shadow: 0 6px 15px #f4d35e33;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #d9dcdc;
+    user-select: none;
+}
+
+.rdv-container h2 {
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #f4d35e;
+    text-shadow: 1px 1px 2px #bfae3c;
+    letter-spacing: 2px;
+}
+
+.rdv-form .form-group {
+    margin-bottom: 22px;
+}
+
+.rdv-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #e3e7eb;
+    text-shadow: 0 0 2px #22272e;
+}
+
+.rdv-form input,
+.rdv-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: none;
+    background-color: #313940;
+    color: #d9dcdc;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: inset 3px 3px 6px #22272e;
+    transition: background-color 0.3s ease;
+}
+
+.rdv-form input:focus,
+.rdv-form select:focus {
+    background-color: #3a4350;
+    outline: none;
+    box-shadow: 0 0 10px 3px #f4d35e;
+}
+
+.rdv-form .submit-btn {
+    width: 100%;
+    background-color: #f4d35e;
+    color: #22272e;
+    padding: 14px 0;
+    font-size: 1.2rem;
+    font-weight: 900;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 10px #bfae3caa;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rdv-form .submit-btn:hover {
+    background-color: #d8c254;
+    box-shadow: 0 7px 14px #bfae3cdd;
+}
+
+.rdv-form .error {
+    color: #ef5b5b;
+    background-color: #5a2222;
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin-top: 6px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px #a33131bb;
+}

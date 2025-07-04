@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<!-- {% load static %} -->
+
+{% block content %}
+<div class="rdv-container">
+    <h2> Prendre un rendez-vous </h2>
+
+    <form method ="post" class="rdv-form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error"> {{ field.errors|striptags }} </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="submit-btn"> Valider le rendez-vous </button>
+    </form>
+
+    {% if form.non_field_errors %}
+        <div class="error"> {{ for.non_field_errors }}</div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'online_rdv/css/prise_rdv.css' %}">
+{% endblock %}

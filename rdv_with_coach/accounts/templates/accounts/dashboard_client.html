@@ -3,6 +3,9 @@
 
 {% block content %}
 <h1>Bienvenue {{ user.username }}</h1>
-<p>Voici vos rendez-vous :</p>
+
+<p>Voici vos rendez-vous à venir :</p>
 <!-- Ici tu affichera les rendez-vous liés à ce client -->
+
+<p> Vous souhaitez prendre rendez-vous? Cliquez <a href="{% url 'online_rdv:rdv' %}">ici</a> ! </p>
 {% endblock %}

@@ -1,142 +1,263 @@
+/* === style.css général - thème Ninja du Chill === */
+
 body {
-    background-color: #1e293b; /* bleu ardoise foncé */
-    color: #f1f5f9; /* blanc cassé */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #22272e; /* bleu nuit profond, style dojo secret */
+    color: #d9dcdc; /* gris clair pour bien voir sans agresser */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* fun, décalé */
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    user-select: none; /* un peu mystérieux */
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 960px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 24px;
 }
 
 /* HEADER */
 header.banner {
-    background-color: #334155; /* gris-bleu foncé */
-    border-bottom: 4px solid #facc15; /* jaune soleil */
+    background-color: #2c313a; /* gris foncé style armure ninja */
+    border-bottom: 3px solid #f4d35e; /* jaune soleil doux */
+    box-shadow: 0 2px 5px rgba(244, 211, 94, 0.5);
 }
 
 .banner-content {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
 }
 
 .logo {
-    width: 60px;
+    width: 64px;
     height: auto;
+    filter: drop-shadow(1px 1px 1px #bfae3c);
+    transform: rotate(-5deg);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: rotate(5deg) scale(1.1);
 }
 
 header h1 {
     margin: 0;
-    font-size: 2em;
-    color: #facc15; /* accent jaune */
+    font-size: 2.2em;
+    color: #f4d35e; /* jaune doux */
+    text-shadow: 1px 1px 1px #bfae3c;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
 nav {
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 nav a {
-    color: #f1f5f9;
-    margin: 0 10px;
+    color: #d9dcdc;
+    margin: 0 12px;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: color 0.3s ease;
+    padding: 4px 6px;
+    border-radius: 6px;
 }
 
 nav a:hover {
-    color: #facc15;
+    color: #f4d35e;
+    background-color: #393f4a;
 }
 
 .nav-link-button {
-    color: #f1f5f9;
-    font-weight: 500;
+    color: #d9dcdc;
+    font-weight: 600;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 12px;
     cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-link-button:hover {
-    color: #facc15;
+    background-color: #f4d35e;
+    color: #22272e;
 }
 
 .nav-user {
-    margin: 0 10px;
+    margin: 0 12px;
 }
 
 .username {
-    color: #facc15; 
-    font-weight: 400;
+    color: #f4d35e;
+    font-weight: 700;
+    font-style: italic;
 }
-
 
 /* MAIN */
 main {
-    background-color: #e2e8f0; /* gris clair */
-    color: #1e293b; /* bleu foncé */
-    min-height: 400px;
-    border-radius: 0 0 10px 10px;
-    padding: 20px;
+    background-color: #313940; /* fond dojo zen */
+    color: #d9dcdc;
+    min-height: 440px;
+    border-radius: 0 0 14px 14px;
+    padding: 30px;
+    box-shadow: inset 0 0 15px 1px #1a1f26;
+}
+
+
+/* DESCRIPTION */
+
+.description-home {
+    max-width: 700px;
+    margin: 30px auto 40px auto;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #2f3542 0%, #404a56 100%);
+    border-radius: 14px;
+    box-shadow:
+      0 0 10px 2px rgba(244, 211, 94, 0.4),
+      inset 0 0 8px 2px #f4d35e66;
+    color: #d1d5db; /* gris clair */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+    user-select: text;
+    position: relative;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: default;
+}
+
+.description-home:hover {
+    box-shadow:
+      0 0 18px 4px #f4d35eaa,
+      inset 0 0 15px 3px #f4d35ecc;
+    transform: scale(1.02);
+}
+
+.description-home::before,
+.description-home::after {
+    content: '☯';
+    position: absolute;
+    font-size: 2rem;
+    color: #bfae3c88;
+    top: 14px;
+    user-select: none;
+    font-weight: 900;
+    text-shadow: 0 0 6px #f4d35e55;
+    transition: color 0.3s ease;
+}
+
+.description-home::before {
+    left: 18px;
+}
+
+.description-home::after {
+    right: 18px;
+}
+
+.description-home:hover::before,
+.description-home:hover::after {
+    color: #f4d35e;
+}
+
+        /* Mots-clés jaunes et gras */
+.description-home .highlight {
+    color: #f4d35e;
+    font-weight: 700;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    letter-spacing: 0.04em;
+}
+
+        /* Petite animation douce de texte pour les mots-clés */
+@keyframes ninjaWave {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+}
+
+.description-home .highlight.wave {
+    display: inline-block;
+    animation: ninjaWave 3s ease-in-out infinite;
 }
 
 
 /* FOOTER */
 footer {
-    background-color: #334155;
-    color: #f1f5f9;
-    font-size: 0.9em;
-    border-top: 2px solid #facc15;
-    padding: 20px 0;
+    background-color: #2c313a;
+    color: #cfcfcf;
+    font-size: 0.85em;
+    border-top: 3px solid #f4d35e;
+    padding: 22px 0;
+    text-align: center;
+    font-style: italic;
 }
-
 
 /* Formulaires */
 .form-style {
-    background-color: #f8fafc; /* gris très clair */
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
+    background-color: #404a56; /* plaque sombre */
+    padding: 22px;
+    border-radius: 14px;
+    max-width: 420px;
     margin: 0 auto;
-    color: #1e293b;
+    color: #d9dcdc;
+    box-shadow: 0 0 12px 1px #f4d35e33;
+    font-size: 1rem;
 }
 
 .form-style input[type="text"],
 .form-style input[type="password"],
 .form-style input[type="email"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #cbd5e1;
-    border-radius: 5px;
-}
-
-.btn-submit {
-    background-color: #facc15;
-    color: #1e293b;
+    width: 90%;
+    padding: 10px 12px;
+    margin-top: 10px;
+    margin-bottom: 18px;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
+    border-radius: 8px;
+    background-color: #2c313a;
+    color: #e0e0e0;
+    box-shadow: inset 2px 2px 4px #1b1f24;
+    font-weight: 600;
+    font-size: 1rem;
     transition: background-color 0.3s ease;
 }
 
-.btn-submit:hover {
-    background-color: #eab308;
+.form-style input[type="text"]:focus,
+.form-style input[type="password"]:focus,
+.form-style input[type="email"]:focus {
+    background-color: #3f4750;
+    outline: none;
+    box-shadow: 0 0 8px 2px #f4d35e;
 }
 
+.btn-submit {
+    background-color: #f4d35e;
+    color: #22272e;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 1.15rem;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px #bfae3caa;
+}
 
+.btn-submit:hover {
+    background-color: #d8c254;
+    box-shadow: 0 6px 12px #bfae3cdd;
+}
 
 /* Messages */
 .message {
-    background-color: #bbf7d0; /* vert clair */
-    color: #166534;
-    border-left: 4px solid #22c55e;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 4px;
+    background-color: #264653; /* bleu marine profond */
+    color: #f4d35e;
+    border-left: 6px solid #f4d35e;
+    padding: 14px 20px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 3px 8px #bfae3c88;
+    user-select: text;
 }
