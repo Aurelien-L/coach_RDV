@@ -25,6 +25,7 @@ class SeanceForm(forms.ModelForm):
 
         coach_group = Group.objects.get(name='coach')
         self.fields['coach'].queryset = User.objects.filter(groups=coach_group)
+        
 
     def clean(self):
         cleaned_data = super().clean()

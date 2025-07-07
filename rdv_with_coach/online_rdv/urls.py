@@ -6,4 +6,5 @@ app_name = "online_rdv"
 
 urlpatterns = [
     path('', views.prendre_rdv, name='rdv'),
+    path('annuler/<int:seance_id>/', views.annuler_seance, name='annuler_seance'),
 ]
