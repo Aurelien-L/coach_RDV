@@ -2,11 +2,30 @@
 {% block title %}Espace Coach{% endblock %}
 
 {% block content %}
-<h1>Bienvenue {{ user.username }}, le super Coach ! </h1>
+<div class="container">
+  <h1>Bienvenue <span class="highlight">{{ user.username }}</span>, le super Coach !</h1>
 
-<p>Voici vos rendez-vous à venir :</p>
-<!-- Ici tu afficheras tous les rendez-vous si tu as un modèle associé -->
+  <h2>Vos séances à venir</h2>
 
-<p> Vous souhaitez vous-même prendre rendez-vous? Cliquez <a href="{% url 'online_rdv:rdv' %}">ici</a> ! </p>
+  {% if seances %}
+    <div class="seance-cards">
+      {% for seance in seances %}
+        <div class="seance-card">
+          <div class="seance-details">
+            <p><strong>Date :</strong> {{ seance.date }}</p>
+            <p><strong>Heure :</strong> {{ seance.heure_debut }} - {{ seance.heure_fin }}</p>
+            <p><strong>Client :</strong> {{ seance.client.username }}</p>
+            <p><strong>Objet :</strong> {{ seance.objet }}</p>
+          </div>
+          <form method="post" action="{% url 'online_rdv:annuler_seance' seance.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-danger">Annuler</button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="message">Aucune séance planifiée pour le moment.</p>
+  {% endif %}
 
 {% endblock %}

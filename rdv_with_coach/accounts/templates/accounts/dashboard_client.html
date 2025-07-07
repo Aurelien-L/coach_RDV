@@ -2,10 +2,34 @@
 {% block title %}Espace Client{% endblock %}
 
 {% block content %}
-<h1>Bienvenue {{ user.username }}</h1>
+<div class="container">
+  <h1>Bienvenue <span class="highlight">{{ user.username }}</span></h1>
 
-<p>Voici vos rendez-vous à venir :</p>
-<!-- Ici tu affichera les rendez-vous liés à ce client -->
+  <h2>Vos rendez-vous à venir</h2>
 
-<p> Vous souhaitez prendre rendez-vous? Cliquez <a href="{% url 'online_rdv:rdv' %}">ici</a> ! </p>
+  {% if seances %}
+    <div class="seance-cards">
+      {% for seance in seances %}
+        <div class="seance-card">
+          <div class="seance-details">
+            <p><strong>Date :</strong> {{ seance.date }}</p>
+            <p><strong>Heure :</strong> {{ seance.heure_debut }} - {{ seance.heure_fin }}</p>
+            <p><strong>Coach :</strong> {{ seance.coach.username }}</p>
+            <p><strong>Objet :</strong> {{ seance.objet }}</p>
+          </div>
+          <form method="post" action="{% url 'online_rdv:annuler_seance' seance.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-danger">Annuler</button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="message">Vous n'avez pas encore de rendez-vous.</p>
+  {% endif %}
+
+  <div class="action-section">
+    <a href="{% url 'online_rdv:rdv' %}" class="btn-rdv">Prendre un rendez-vous 🙏</a>
+  </div>
+</div>
 {% endblock %}

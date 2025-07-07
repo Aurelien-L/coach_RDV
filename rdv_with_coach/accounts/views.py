@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
+from online_rdv.models import Seance
 
 
 def login_user(request):
@@ -54,7 +55,10 @@ def register_user(request):
 @login_required
 def dashboard(request):
     user = request.user
+
     if user.groups.filter(name='coach').exists():
-        return render(request, 'accounts/dashboard_coach.html', {'user': user})
+        seances = Seance.objects.filter(coach=user).order_by('date', 'heure_debut')
+        return render(request, 'accounts/dashboard_coach.html', {'user': user, 'seances': seances})
     else:
-        return render(request, 'accounts/dashboard_client.html', {'user': user})
+        seances = Seance.objects.filter(client=user).order_by('date', 'heure_debut')
+        return render(request, 'accounts/dashboard_client.html', {'user': user, 'seances': seances})
