@@ -14,9 +14,9 @@
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Se connecter" class="btn-submit">
+        <p>Pas encore de compte ? <a href="{% url 'accounts:register' %}">Créer un compte</a></p>
     </form>
 
-    <p>Pas encore de compte ? <a href="{% url 'accounts:register' %}">Créer un compte</a></p>
 {% endblock %}
 
 

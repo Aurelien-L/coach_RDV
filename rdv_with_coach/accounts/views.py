@@ -6,6 +6,8 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from online_rdv.models import Seance
+from django.utils import timezone
+
 
 
 def login_user(request):
@@ -17,7 +19,7 @@ def login_user(request):
 
         if user is not None:
             login(request, user)
-            return redirect('accounts:dashboard') # A VERIFIER
+            return redirect('accounts:dashboard')
         else:
             messages.info(request, "Identifiant ou mot de passe incorrect")
 
@@ -27,7 +29,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('accueil') # A VERIFIER
+    return redirect('accueil')
 
 
 def register_user(request):
@@ -57,8 +59,8 @@ def dashboard(request):
     user = request.user
 
     if user.groups.filter(name='coach').exists():
-        seances = Seance.objects.filter(coach=user).order_by('date', 'heure_debut')
+        seances = Seance.objects.filter(coach=user,  date__gte=timezone.now().date()).order_by('date', 'heure_debut')
         return render(request, 'accounts/dashboard_coach.html', {'user': user, 'seances': seances})
     else:
-        seances = Seance.objects.filter(client=user).order_by('date', 'heure_debut')
+        seances = Seance.objects.filter(client=user,  date__gte=timezone.now().date()).order_by('date', 'heure_debut')
         return render(request, 'accounts/dashboard_client.html', {'user': user, 'seances': seances})

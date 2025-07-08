@@ -71,3 +71,12 @@ class SeanceForm(forms.ModelForm):
                 break
 
         return cleaned_data
+    
+
+class NoteCoachForm(forms.ModelForm):
+    class Meta:
+        model = Seance
+        fields = ['note_coach']
+        widget = {
+            'note_coach': forms.Textarea(attrs={'rows': 3, 'placeholder': "Ajouter une note privée..."}),
+        }

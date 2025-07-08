@@ -10,6 +10,8 @@ class Seance(models.Model):
     objet = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    note_coach = models.TextField(blank=True, null=True)    # champ privé pour le coach lui permettant de mettre des notes
+
     def __str__(self):
         return f"RDV {self.date} {self.heure_debut} - {self.client.username} avec {self.coach.username}"
     
