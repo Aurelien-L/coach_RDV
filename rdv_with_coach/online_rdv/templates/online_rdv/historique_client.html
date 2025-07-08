@@ -7,7 +7,8 @@
 <div class="seance-cards">
     <div class="seance-card">
     <h3>Séance du {{ seance.date }}</h3>
-    <p>Avec : {{ seance.coach }}</p>
+    <p><span class="seance-element"> Avec :</span> {{ seance.coach }}</p>
+    <p><span class="seance-element"> Objet :</span> {{ seance.objet }}</p>
     <a href="{% url 'online_rdv:seance_detail' seance.id %}" class="btn-detail">Détails</a>
     </div>
 </div>

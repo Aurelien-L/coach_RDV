@@ -14,11 +14,15 @@
 
     <h2>🗓️ Détails de la séance du <span class="highlight">{{ seance.date }}</span></h2>
 
-    <p><strong>Coach :</strong> {{ seance.coach }}</p>
-    <p><strong>Client :</strong> {{ seance.client }}</p>
+    <p><span class="seance-element"> Coach :</span> {{ seance.coach }}</p>
+    <p><span class="seance-element"> Client :</span> {{ seance.client }}</p>
 
     {% if seance.heure_debut %}
-      <p><strong>Heure :</strong> {{ seance.heure_debut }}</p>
+      <p><span class="seance-element"> Heure :</span> {{ seance.heure_debut }}</p>
+    {% endif %}
+
+    {% if seance.objet %}
+      <p><span class="seance-element"> Objet:</span> {{ seance.objet }}</p>
     {% endif %}
 
     <hr class="seance-divider">

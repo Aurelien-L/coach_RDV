@@ -12,10 +12,10 @@
       {% for seance in seances %}
         <div class="seance-card">
           <div class="seance-details">
-            <p><strong>Date :</strong> {{ seance.date }}</p>
-            <p><strong>Heure :</strong> {{ seance.heure_debut }} - {{ seance.heure_fin }}</p>
-            <p><strong>Coach :</strong> {{ seance.coach.username }}</p>
-            <p><strong>Objet :</strong> {{ seance.objet }}</p>
+            <p><span class="seance-element">Date :</span> {{ seance.date }}</p>
+            <p><span class="seance-element">Heure :</span> {{ seance.heure_debut }} - {{ seance.heure_fin }}</p>
+            <p><span class="seance-element">Coach :</span> {{ seance.coach.username }}</p>
+            <p><span class="seance-element">Objet :</span> {{ seance.objet }}</p>
           </div>
           <form method="post" action="{% url 'online_rdv:annuler_seance' seance.id %}">
             {% csrf_token %}

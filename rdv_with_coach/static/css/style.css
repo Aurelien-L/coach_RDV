@@ -311,10 +311,15 @@ footer {
     margin: 4px 0;
 }
 
+.seance-element {
+    color : #f4d35e;
+    font-weight: 700;
+}
+
 .btn-detail {
     display: inline-block;
     padding: 8px 16px;
-    background-color: #f4d35e; /* vert doux zen */
+    background-color: #f4d35e; 
     color: #22272e;
     text-decoration: none;
     font-weight: 500;
