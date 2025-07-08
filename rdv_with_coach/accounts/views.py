@@ -37,12 +37,8 @@ def register_user(request):
         form = CustomUserCreationForm(request.POST)
 
         if form.is_valid():
-            user = form.save(commit=False)
-            role = form.cleaned_data['role']
-            user.save()
-
-            # Ajouter l'utilisateur au groupe correspondant
-            group = Group.objects.get(name=role)
+            user = form.save()
+            group = Group.objects.get(name='client')  # On force le rôle client
             user.groups.add(group)
 
             messages.success(request, "Votre compte a été créé avec succès ! Vous pouvez maintenant vous connecter.")
