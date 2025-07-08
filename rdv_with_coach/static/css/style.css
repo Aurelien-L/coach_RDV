@@ -3,7 +3,7 @@
 body {
     /*background: #22272e; /* bleu nuit profond, style dojo secret */
     color: #d9dcdc; /* gris clair pour bien voir sans agresser */
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* fun, décalé */
+    font-family: 'Segoe UI', sans-serif; /* fun, décalé */
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -178,7 +178,7 @@ main {
 .description-home .highlight {
     color: #f4d35e;
     font-weight: 700;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     letter-spacing: 0.04em;
 }
 
@@ -242,6 +242,10 @@ footer {
     box-shadow: 0 0 8px 2px #f4d35e;
 }
 
+.form-style a {
+    color: #f4d35e;
+}
+
 .btn-submit {
     background-color: #f4d35e;
     color: #22272e;
@@ -259,6 +263,7 @@ footer {
     background-color: #d8c254;
     box-shadow: 0 6px 12px #bfae3cdd;
 }
+
 
 /* Messages */
 .message {
@@ -306,6 +311,23 @@ footer {
     margin: 4px 0;
 }
 
+.btn-detail {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f4d35e; /* vert doux zen */
+    color: #22272e;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.btn-detail:hover {
+    background-color: #e6c94d;
+    transform: translateY(-2px);
+}
+
+
 /* === Bouton prise de rendez-vous === */
 .btn-rdv {
     display: inline-block;
@@ -346,4 +368,84 @@ footer {
 .action-section {
     margin-top: 30px;
     text-align: center;
+}
+
+
+/* == Détail des séances == */
+
+.seance-detail-box {
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: rgba(44, 49, 58, 0.9);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px #f4d35e33;
+    color: #e0e0e0;
+    font-size: 1.05em;
+}
+
+.seance-detail-box h2 {
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    color: #f4d35e;
+}
+
+.seance-divider {
+    margin: 24px 0;
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #f4d35e, transparent);
+}
+
+.seance-form {
+    margin-top: 24px;
+}
+
+.note-textarea {
+    width: 95%;
+    height: 140px;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    padding: 12px;
+    border-radius: 10px;
+    background-color: #2c313a;
+    color: #e0e0e0;
+    border: none;
+    resize: vertical;
+    box-shadow: inset 2px 2px 4px #1b1f24;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+.note-display {
+    background-color: #2c313a;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 6px #f4d35e66;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.return-link {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.message-container {
+    margin-bottom: 20px;
+}
+
+.message.success {
+    background-color: #1b3e2b;
+    border-left: 5px solid #4caf50;
+    color: #dfffe0;
+    padding: 12px 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

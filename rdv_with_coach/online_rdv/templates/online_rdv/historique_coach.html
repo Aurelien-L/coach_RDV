@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h2>Historique des séances</h2>
+
+{% for seance in seances %}
+<div class="seance-cards">
+    <div class="seance-card">
+    <h3>Séance du {{ seance.date }}</h3>
+    <p>Avec : {{ seance.client }}</p>
+    <a href="{% url 'online_rdv:seance_detail' seance.id %}" class="btn-detail">Détails</a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

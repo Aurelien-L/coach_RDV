@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .forms import SeanceForm
 from .models import Seance
+from .forms import NoteCoachForm
+from django.utils import timezone
 
 @login_required
 def prendre_rdv(request):
@@ -38,3 +41,68 @@ def annuler_seance(request, seance_id):
             return redirect('accounts:dashboard')
 
     return redirect('accounts:dashboard')
+
+
+@login_required
+def historique_coach(request):
+    if not request.user.groups.filter(name='coach').exists():
+        return redirect('accounts:dashboard')
+    
+    seances = Seance.objects.filter(coach=request.user, date__lt=timezone.now().date()).order_by('-date')
+    return render(request, 'online_rdv/historique_coach.html', {'seances': seances})
+
+
+@login_required
+def modifier_note_coach(request, seance_id):
+    if not request.user.groups.filter(name='coach').exists():
+        return redirect('accounts:dashboard')
+
+    seance = get_object_or_404(Seance, id=seance_id, coach=request.user)
+
+    if request.method == 'POST':
+        form = NoteCoachForm(request.POST, instance=seance)
+        if form.is_valid():
+            form.save()
+    return redirect('online_rdv:historique_coach')
+
+
+@login_required
+def historique_client(request):
+    if not request.user.groups.filter(name='client').exists():
+        return redirect('dashboard_coach')
+
+    seances = Seance.objects.filter(client=request.user, date__lt=timezone.now().date()).order_by('-date')
+    return render(request, 'online_rdv/historique_client.html', {'seances': seances})
+
+
+@login_required
+def redirect_historique(request):
+    if request.user.groups.filter(name='coach').exists():
+        return redirect('online_rdv:historique_coach')
+    elif request.user.groups.filter(name='client').exists():
+        return redirect('online_rdv:historique_client')
+    else:
+        return redirect('Accueil') 
+    
+
+@login_required
+def seance_detail(request, seance_id):
+    seance = get_object_or_404(Seance, id=seance_id)
+
+    if request.user.groups.filter(name='client').exists():
+        if seance.client != request.user:
+            return redirect('online_rdv:historique_client')
+    elif request.user.groups.filter(name='coach').exists():
+        if seance.coach != request.user:
+            return redirect('online_rdv:historique_coach')
+    else:
+        return redirect('Accueil')
+    
+    if request.method == "POST" and request.user.groups.filter(name='coach').exists():
+        note = request.POST.get("note_coach", "")
+        seance.note_coach = note
+        seance.save()
+        messages.success(request, "✅ Note enregistrée avec succès.")
+        return redirect('online_rdv:seance_detail', seance_id=seance.id)
+    
+    return render(request, 'online_rdv/seance_detail.html', {'seance': seance})

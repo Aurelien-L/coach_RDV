@@ -23,7 +23,12 @@
                     <nav>
                         <!--<a href="{% url 'accueil' %}">Accueil</a> |-->
                         <a href="{% url 'accounts:dashboard'%}">Agenda</a> |
-                        <a href="{% url 'online_rdv:rdv'%}">Prendre RDV</a> |
+                        {% if not is_coach %}
+                            <a href="{% url 'online_rdv:rdv' %}">Prendre RDV</a> |
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'online_rdv:historique' %}">Historique</a> |
+                        {% endif %}
                         {% if user.is_authenticated %}
                             <a href="#" class="nav-link-button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>  |
                             <form id="logout-form" method="post" action="{% url 'accounts:logout' %}" style="display: none;">
