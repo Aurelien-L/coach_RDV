@@ -53,10 +53,30 @@
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>© 2025 - Le Sensei du Chill</p>
+    <footer class="footer-dojo">
+    <div class="container">
+        <div class="footer-top">
+            <h4><span class="highlight">Le Dojo du Chill</span></h4>
         </div>
-    </footer>
+
+        <div class="footer-links">
+            <ul>
+                <li><a href="{% url 'online_rdv:rdv' %}">Prendre rendez-vous</a></li>
+                <li><a href="{% url 'accounts:login' %}">Connexion</a></li>
+                <li><a href="{% url 'accounts:register' %}">Créer un compte</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-quote">
+            <p>“Même les ninjas du stress ont besoin d'une pause thé vert.” 🍵</p>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 – Le Sensei du Chill 🧘‍♂️ | Codé avec ❤️ et un soupçon de style ✨</p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

@@ -5,21 +5,47 @@
 {% block title %}Accueil{% endblock %}
 
 {% block content %}
-    
-    <div class="description-home">
-        <h2>Bienvenue sur <em class="highlight">Le Dojo du chill</em> !</h2>
-        <p>
-            La plateforme de réservation officielle du légendaire <strong class="highlight">Sensei du chill</strong> — maître incontesté de la <span class="highlight">zen-attitude</span> et champion du <span class="highlight">cool absolu</span>.<br>
-            Ici, fini le <span class="highlight">stress</span>, les prises de tête, et les journées <span class="highlight">speed</span> : on respire, on décompresse, on chill comme jamais.<br>
-            Tu veux apprendre à surfer sur la vague de la <span class="highlight">détente</span>, à dompter le dragon du <span class="highlight">stress</span> ou à devenir un <span class="highlight">ninja du bien-être</span> ? C’est par ici que ça se passe !
-        </p>
-        <p>
-            Avec <em class="highlight">Le Dojo du Chill</em>, prendre rendez-vous avec ton coach de vie préféré, c’est aussi simple que de dire <span class="highlight">“Namasté”</span> (ou <span class="highlight">“T’as 5 minutes ?”</span>) : tu choisis ta date, ton créneau, et hop, tu te prépares à <span class="highlight">chiller</span> en mode expert.
-        </p>
-        <p>
-            Alors, prêt·e à devenir un <span class="highlight">as du lâcher-prise</span> ? Le <strong class="highlight">Sensei du chill</strong> t’attend pour transformer ta vie… sans prise de tête, mais avec beaucoup de <span class="highlight">fun</span> !
-        </p>
-        <p><em class="highlight">Le Dojo du Chill</em> — parce que la vie est trop courte pour ne pas se <span class="highlight">détendre</span>.</p>
-    </div>
+    {% if not is_coach %}
+        
+            <div class="description-home">
+                <h2>Bienvenue sur <em class="highlight">Le Dojo du chill</em> !</h2>
+                <p>
+                    La plateforme de réservation officielle du légendaire <strong class="highlight">Sensei du chill</strong> — maître incontesté de la <span class="highlight">zen-attitude</span> et champion du <span class="highlight">cool absolu</span>.<br>
+                    Ici, fini le <span class="highlight">stress</span>, les prises de tête, et les journées <span class="highlight">speed</span> : on respire, on décompresse, on chill comme jamais.<br>
+                </p>
+                <p>
+                    Avec <em class="highlight">Le Dojo du Chill</em>, prendre rendez-vous avec ton coach de vie préféré, c’est aussi simple que de dire <span class="highlight">“Namasté”</span> (ou <span class="highlight">“T’as 5 minutes ?”</span>) : tu choisis ta date, ton créneau, et hop, tu te prépares à <span class="highlight">chiller</span> en mode expert.
+                </p>
+                <p>
+                    Le Sensei te reçoit <span class="highlight">du lundi au vendredi, de 9h à 12h et de 13h à 18h</span>, que ce soit pour surfer sur la vague de la <span class="highlight">détente</span>, dompter le dragon du <span class="highlight">stress</span> ou même devenir un <span class="highlight">ninja du bien-être</span>.
+                </p>
+                <p>
+                    Alors, prêt·e à devenir un <span class="highlight">as du lâcher-prise</span> ? Le <strong class="highlight">Sensei du chill</strong> t’attend pour transformer ta vie… et ça se passe par ici !
+                </p>
+                <a href="{% url 'online_rdv:rdv' %}" class="btn-rdv">Prendre RDV</a>
+                <p><em class="highlight">Le Dojo du Chill</em> — parce que la vie est trop courte pour ne pas se <span class="highlight">détendre</span>.</p>
+            </div>
 
+    {% else %}
+            
+            <div class="description-home">
+                <h2>Bienvenue dans votre Dojo, <em class="highlight">Sensei</em> !</h2>
+                    <p>
+                        Le <strong class="highlight">dojo est ouvert</strong>, l'encens est allumé, les coussins sont moelleux, et tes élèves n'attendent qu'une chose : <span class="highlight">ta sagesse légendaire</span> (et peut-être un peu ta playlist lo-fi).
+                    </p>
+                    <p>
+                        Ici, tu es chez toi. Maître absolu du <span class="highlight">cool</span>, ninja du <span class="highlight">mindset zen</span>, guide suprême du <span class="highlight">chill intérieur</span>… c’est toi qui mènes la danse, ou plutôt, la méditation.
+                    </p>
+                    <p>
+                        Gère tes séances, accueille tes apprentis du bien-être, et prépare-les à gravir les échelons de la détente ultime. À chaque rendez-vous, une mission : <span class="highlight">répandre la zenitude</span> à travers le monde (ou au moins chez Laura, vers 10h).
+                    </p>
+                    <p>
+                        Que la force du <span class="highlight">lâcher-prise</span> soit avec toi, Ô Sensei. C’est le moment de coacher en toute sérénité.
+                    </p>
+                    <a href="{% url 'accounts:dashboard' %}" class="btn-rdv">Voir mes rendez-vous</a>
+                    <p><em class="highlight">Le Dojo du Chill</em> — même les maîtres ont besoin d’un espace sacré pour gérer leurs disciples 🧘‍♂️</p>
+                </div>
+
+        
+    {% endif %}
 {% endblock %}
