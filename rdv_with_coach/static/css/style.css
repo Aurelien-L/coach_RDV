@@ -1,13 +1,12 @@
-/* === style.css général - thème Ninja du Chill === */
+/* === style.css général  === */
 
 body {
-    /*background: #22272e; /* bleu nuit profond, style dojo secret */
-    color: #d9dcdc; /* gris clair pour bien voir sans agresser */
-    font-family: 'Segoe UI', sans-serif; /* fun, décalé */
+    color: #d9dcdc;
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    user-select: none; /* un peu mystérieux */
+    user-select: none;
 }
 
 .container {
@@ -18,8 +17,8 @@ body {
 
 /* HEADER */
 header.banner {
-    background-color: #2c313a; /* gris foncé style armure ninja */
-    border-bottom: 3px solid #f4d35e; /* jaune soleil doux */
+    background-color: #2c313a;
+    border-bottom: 3px solid #f4d35e;
     box-shadow: 0 2px 5px rgba(244, 211, 94, 0.5);
 }
 
@@ -44,7 +43,7 @@ header.banner {
 header h1 {
     margin: 0;
     font-size: 2.2em;
-    color: #f4d35e; /* jaune doux */
+    color: #f4d35e;
     text-shadow: 1px 1px 1px #bfae3c;
     font-weight: 900;
     letter-spacing: 2px;
@@ -130,7 +129,7 @@ main {
     box-shadow:
       0 0 10px 2px rgba(244, 211, 94, 0.4),
       inset 0 0 8px 2px #f4d35e66;
-    color: #d1d5db; /* gris clair */
+    color: #d1d5db;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.1rem;
     line-height: 1.5;
@@ -174,7 +173,6 @@ main {
     color: #f4d35e;
 }
 
-        /* Mots-clés jaunes et gras */
 .description-home .highlight {
     color: #f4d35e;
     font-weight: 700;
@@ -182,7 +180,7 @@ main {
     letter-spacing: 0.04em;
 }
 
-        /* Petite animation douce de texte pour les mots-clés */
+/* Petite animation */
 @keyframes ninjaWave {
     0%, 100% { transform: translateX(0); }
     50% { transform: translateX(4px); }
@@ -322,7 +320,7 @@ main {
 }
 
 
-/* === Cartes de rendez-vous style dojo chill === */
+/* === Seances === */
 .seance-cards {
     display: flex;
     flex-direction: column;

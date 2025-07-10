@@ -4,6 +4,12 @@ from django.contrib.auth.models import User, Group
 from datetime import datetime, date as dt_date, time, timedelta
 
 class SeanceForm(forms.ModelForm):
+    """
+    Formulaire permettant aux utilisateurs de prendre RDV (Seance), et vérifiant
+    les horaires autorisés, les conflits avec d'autres séances et la validité de 
+    la date et de l'heure.
+
+    """
     HEURES_DISPONIBLES = [
         (time(h, 0), f"{h:02d}:00") for h in range(9, 12)
     ] + [
@@ -74,6 +80,10 @@ class SeanceForm(forms.ModelForm):
     
 
 class NoteCoachForm(forms.ModelForm):
+    """
+    Formulaire permettant au coach d'enregistrer une note sur une séance passée
+
+    """
     class Meta:
         model = Seance
         fields = ['note_coach']
