@@ -1,6 +1,11 @@
 from django.contrib.auth.models import Group
 
 def is_coach(request):
+    """
+    Fonction permettant de vérifier en permanence si l'utilisateur
+    connecté est un coach ou non (influence l'affichage)
+
+    """
     is_coach = False
     if request.user.is_authenticated:
         is_coach = request.user.groups.filter(name='coach').exists()

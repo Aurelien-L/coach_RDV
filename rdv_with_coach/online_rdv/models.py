@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from datetime import datetime, timedelta
 
 class Seance(models.Model):
+    """
+    Classe représentant une Séance (RDV) et ses paramètres
+
+    """
     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name="seances_client")
     coach = models.ForeignKey(User, on_delete=models.CASCADE, related_name="seances_coach")
     date = models.DateField()

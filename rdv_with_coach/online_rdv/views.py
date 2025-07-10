@@ -8,12 +8,17 @@ from django.utils import timezone
 
 @login_required
 def prendre_rdv(request):
+    """
+    Vue permettant la prise d'un RDV (nécessite que l'utilisateur soit connecté)
+
+    """
     if request.method == 'POST':
         form = SeanceForm(request.POST, client=request.user)
         if form.is_valid():
             seance = form.save(commit=False)
             seance.client = request.user
             seance.save()
+            messages.success(request, "Votre rendez-vous a bien été pris en compte !")
             return redirect('accounts:dashboard')
     else:
         form = SeanceForm(client=request.user)
@@ -23,6 +28,10 @@ def prendre_rdv(request):
 
 @login_required
 def annuler_seance(request, seance_id):
+    """
+    Vue permettant d'annuler une séance (nécessite que l'utilisateur soit connecté)
+
+    """
     user = request.user
 
     # Recherche filtrée selon le rôle de l'utilisateur
@@ -45,6 +54,10 @@ def annuler_seance(request, seance_id):
 
 @login_required
 def historique_coach(request):
+    """
+    Vue de l'historique du coach (nécessite que l'utilisateur soit connecté et soit du groupe "coach")
+
+    """
     if not request.user.groups.filter(name='coach').exists():
         return redirect('accounts:dashboard')
     
@@ -54,6 +67,10 @@ def historique_coach(request):
 
 @login_required
 def modifier_note_coach(request, seance_id):
+    """
+    Vue permettant au coach de modifier une note sur une séance passée
+
+    """
     if not request.user.groups.filter(name='coach').exists():
         return redirect('accounts:dashboard')
 
@@ -68,6 +85,10 @@ def modifier_note_coach(request, seance_id):
 
 @login_required
 def historique_client(request):
+    """
+    Vue de l'historique du client (nécessite que l'utilisateur soit connecté et soit du groupe "client")
+
+    """
     if not request.user.groups.filter(name='client').exists():
         return redirect('dashboard_coach')
 
@@ -77,6 +98,10 @@ def historique_client(request):
 
 @login_required
 def redirect_historique(request):
+    """
+    Vue redirigeant vers la route correspondant à l'historique de l'utilisateur connecté
+
+    """
     if request.user.groups.filter(name='coach').exists():
         return redirect('online_rdv:historique_coach')
     elif request.user.groups.filter(name='client').exists():
@@ -87,6 +112,10 @@ def redirect_historique(request):
 
 @login_required
 def seance_detail(request, seance_id):
+    """
+    Vue permettant d'accéder aux détails d'une séance
+
+    """
     seance = get_object_or_404(Seance, id=seance_id)
 
     if request.user.groups.filter(name='client').exists():

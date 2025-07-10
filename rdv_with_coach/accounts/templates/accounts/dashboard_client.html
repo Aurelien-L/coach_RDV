@@ -1,9 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Espace Client{% endblock %}
+{% block title %}Agenda{% endblock %}
 
 {% block content %}
 <div class="container">
   <h1>Bienvenue <span class="highlight">{{ user.username }}</span></h1>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="message">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
 
   <h2>Vos rendez-vous à venir</h2>
 

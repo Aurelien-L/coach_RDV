@@ -1,3 +1,6 @@
+<!-- TEMPLATE STRUCTURANT TOUTE LA BASE DU SITE -->
+<!-- Adapte l'affichage de certains éléments au groupe utilisateur -->
+
 {% load static %}
 
 <!DOCTYPE html>
@@ -5,8 +8,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Coach{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
     {% block extra_css%}{% endblock %}
 </head>
 
@@ -21,7 +25,6 @@
                 <div>
                     <h1>Le Dojo du Chill</h1>
                     <nav>
-                        <!--<a href="{% url 'accueil' %}">Accueil</a> |-->
                         <a href="{% url 'accounts:dashboard'%}">Agenda</a> |
                         {% if not is_coach %}
                             <a href="{% url 'online_rdv:rdv' %}">Prendre RDV</a> |
@@ -61,7 +64,11 @@
 
         <div class="footer-links">
             <ul>
-                <li><a href="{% url 'online_rdv:rdv' %}">Prendre rendez-vous</a></li>
+                <li>
+                    {% if not is_coach %}
+                            <a href="{% url 'online_rdv:rdv' %}">Prendre RDV</a>
+                    {% endif %}
+                </li>
                 <li><a href="{% url 'accounts:login' %}">Connexion</a></li>
                 <li><a href="{% url 'accounts:register' %}">Créer un compte</a></li>
                 <li><a href="#">À propos</a></li>

@@ -11,6 +11,10 @@ from django.utils import timezone
 
 
 def login_user(request):
+    """
+    Vue gérant la connexion de l'utilisateur
+
+    """
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -28,11 +32,19 @@ def login_user(request):
 
 
 def logout_user(request):
+    """
+    Vue gérant la déconnexion
+
+    """
     logout(request)
     return redirect('accueil')
 
 
 def register_user(request):
+    """
+    Vue gérant l'inscription de l'utilisateur
+
+    """
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
 
@@ -52,6 +64,10 @@ def register_user(request):
 
 @login_required
 def dashboard(request):
+    """
+    Vue redirigeant vers le bon dashboard coach /client (nécessitant obligatoirement d'être connecté)
+
+    """
     user = request.user
 
     if user.groups.filter(name='coach').exists():

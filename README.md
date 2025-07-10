@@ -94,14 +94,14 @@ pip install -r requirements.txt
 # 4. Se placer dans le dossier rdv_with_coach
 cd rdv_with_coach
 
-# 4. Appliquer les migrations
+# 5. Appliquer les migrations
 python manage.py makemigrations
 python manage.py migrate
 
-# 5. Créer un superutilisateur
+# 6. Créer un superutilisateur
 python manage.py createsuperuser
 
-# 6. Lancer le serveur local
+# 7. Lancer le serveur local
 python manage.py runserver
 ```
 
