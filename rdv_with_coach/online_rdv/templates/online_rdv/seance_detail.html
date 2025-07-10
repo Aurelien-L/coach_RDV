@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Détail de la séance{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="seance-detail-box">
+    {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+            <div class="message success">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <h2>🗓️ Détails de la séance du <span class="highlight">{{ seance.date }}</span></h2>
+
+    <p><span class="seance-element"> Coach :</span> {{ seance.coach }}</p>
+    <p><span class="seance-element"> Client :</span> {{ seance.client }}</p>
+
+    {% if seance.heure_debut %}
+      <p><span class="seance-element"> Heure :</span> {{ seance.heure_debut }}</p>
+    {% endif %}
+
+    {% if seance.objet %}
+      <p><span class="seance-element"> Objet:</span> {{ seance.objet }}</p>
+    {% endif %}
+
+    <hr class="seance-divider">
+
+    {% if user.groups.first.name == "coach" %}
+      <form method="post" class="seance-form">
+        {% csrf_token %}
+        <label for="note_coach"><strong>📝 Note personnelle :</strong></label><br>
+        <textarea name="note_coach" id="note_coach" class="note-textarea">{{ seance.note_coach }}</textarea>
+        <button type="submit" class="btn-submit">💾 Enregistrer</button>
+      </form>
+    {% else %}
+      <p><strong>🧘 Note du coach :</strong></p>
+      <div class="note-display">
+        {{ seance.note_coach|default:"Aucune note disponible." }}
+      </div>
+    {% endif %}
+
+    <a href="{% url 'online_rdv:historique' %}" class="btn-rdv return-link">⬅ Retour à l’historique</a>
+  </div>
+</div>
+{% endblock %}

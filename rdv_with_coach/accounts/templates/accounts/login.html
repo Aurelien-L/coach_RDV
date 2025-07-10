@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+    <h1>Connexion</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" class="form-style">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Se connecter" class="btn-submit">
+        <p>Pas encore de compte ? <a href="{% url 'accounts:register' %}">Créer un compte</a></p>
+    </form>
+
+{% endblock %}
+
+
+
+<!-- IDENTIFIANTS TESTS USER : usertest(2) / testpassword -->
+<!-- IDENTIFIANTS TESTS COACH : coachtest / testpassword -->
+<!-- IDENTIFIANTS TESTS ADMIN: sensei_du_chill / chill_un_max -->

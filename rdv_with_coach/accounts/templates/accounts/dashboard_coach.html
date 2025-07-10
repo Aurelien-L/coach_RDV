@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Agenda{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Bienvenue <span class="highlight">{{ user.username }}</span>, le super Coach !</h1>
+
+  <h2>Vos séances à venir</h2>
+
+  {% if seances %}
+    <div class="seance-cards">
+      {% for seance in seances %}
+        <div class="seance-card">
+          <div class="seance-details">
+            <p><span class="seance-element">Date :</span> {{ seance.date }}</p>
+            <p><span class="seance-element">Heure :</span> {{ seance.heure_debut }} - {{ seance.heure_fin }}</p>
+            <p><span class="seance-element">Client :</span> {{ seance.client.username }}</p>
+            <p><span class="seance-element">Objet :</span> {{ seance.objet }}</p>
+          </div>
+          <form method="post" action="{% url 'online_rdv:annuler_seance' seance.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-danger">Annuler</button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="message">Aucune séance planifiée pour le moment.</p>
+  {% endif %}
+
+{% endblock %}
